@@ -2,7 +2,8 @@ import ij.ImagePlus;
 import ij.plugin.filter.PlugInFilter;
 import ij.process.ColorProcessor;
 import ij.process.ImageProcessor;
-
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 public class Brighten_RGB_2 implements PlugInFilter {
 
     /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
@@ -30,11 +31,15 @@ public class Brighten_RGB_2 implements PlugInFilter {
         for (int v = 0; v < totalLinhas; ++v) {
             for (int u = 0; u < totalColunas; ++u) {
                 cp.getPixel(u, v, pixel);
-                pixel[R] = Math.max(pixel[R] - DECREMENTO, 0); 
-                pixel[G] = Math.max(pixel[G] - DECREMENTO, 0);
-                pixel[B] = Math.max(pixel[B] - DECREMENTO, 0);
+                pixel[R] = min(max(f(pixel[R]), 0), 255);
+                pixel[G] = min(max(f(pixel[G]), 0), 255);
+                pixel[B] = min(max(f(pixel[B]), 0), 255);
                 cp.putPixel(u, v, pixel);
             }
         }
+    }
+
+    public void f(int x) {
+        return x - DECREMENTO;
     }
 }
