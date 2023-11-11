@@ -41,7 +41,7 @@ public class Darken_RGB_2 implements PlugInFilter {
         }
     }
 
-    public void f(int x) {
+    public int f(int x) {
         return x - DECREMENTO;
     }
 }
