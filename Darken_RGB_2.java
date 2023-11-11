@@ -4,7 +4,7 @@ import ij.process.ColorProcessor;
 import ij.process.ImageProcessor;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
-public class Brighten_RGB_2 implements PlugInFilter {
+public class Darken_RGB_2 implements PlugInFilter {
 
     /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
     
