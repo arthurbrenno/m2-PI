@@ -14,7 +14,7 @@ public class Darken_RGB_2 implements PlugInFilter {
     
     /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
     
-    static final int DECREMENTO = 10;
+    static final int DECREMENTO = 100;
     
     /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
     
