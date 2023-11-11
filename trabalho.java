@@ -19,7 +19,7 @@ public class Brighten_RGB_2 implements PlugInFilter {
     /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
     
     public int setup(String arg, ImagePlus imp) {
-        return DOES_RGB; // this plugin works on RGB images
+        return DOES_RGB;
     }
 
     public void run(ImageProcessor ip) {
@@ -27,15 +27,17 @@ public class Brighten_RGB_2 implements PlugInFilter {
         int[] pixel            = new int[3];
         final int totalLinhas  = cp.getHeight();
         final int totalColunas = cp.getWidth();
+        final int produtoEixos = totalLinhas * totalColunas;
 
-        for (int v = 0; v < totalLinhas; ++v) {
-            for (int u = 0; u < totalColunas; ++u) {
-                cp.getPixel(u, v, pixel);
-                pixel[R] = min(max(f(pixel[R]), 0), 255);
-                pixel[G] = min(max(f(pixel[G]), 0), 255);
-                pixel[B] = min(max(f(pixel[B]), 0), 255);
-                cp.putPixel(u, v, pixel);
-            }
+        for (int i = 0; i < produtoEixos; ++i) {
+            int u = i % totalColunas;
+            int v = i / totalColunas;
+        
+            cp.getPixel(u, v, pixel);
+            pixel[R] = min(max(f(pixel[R]), 0), 255);
+            pixel[G] = min(max(f(pixel[G]), 0), 255);
+            pixel[B] = min(max(f(pixel[B]), 0), 255);
+            cp.putPixel(u, v, pixel);
         }
     }
 
